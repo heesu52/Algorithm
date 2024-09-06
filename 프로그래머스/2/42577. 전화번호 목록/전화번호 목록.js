@@ -5,8 +5,10 @@ function solution(phone_book) {
         for(let j=1; j<phone_book.length; j++){
             let number = phone_book[j].slice(0,target.length);
             
-            if(target === number) return false;
-            target = phone_book[j]
+            if(target===number)
+                return false;
+            
+            target = phone_book[j];
         }
-        return true;
+    return true;
 }
