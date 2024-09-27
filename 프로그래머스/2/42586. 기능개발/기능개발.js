@@ -1,13 +1,6 @@
 function solution(progresses, speeds) {
     let count = 1;
-    const day = [];
-    
-    
-   const arr = progresses.map(num=> 100-num);
-   
-    for(let i=0; i<progresses.length; i++){
-        day.push(Math.ceil((arr[i] / speeds[i])));
-    }
+    const day = progresses.map((num, index)=> Math.ceil((100-num)/speeds[index]));
  
     let target = day[0];
     const result = [];
