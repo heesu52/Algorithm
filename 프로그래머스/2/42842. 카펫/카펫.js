@@ -1,15 +1,16 @@
 function solution(brown, yellow) {
-    let sum = brown+yellow;
-    var result=[];
+    let sum = brown + yellow;
     
-    for(let height=3; height<=brown; height++){
-        if(sum%height===0){
-            let width = sum / height //brown + yellow = w*h
+    for(let height = 3 ; height<brown; height++){
+        if(sum % height === 0){
+            let width = sum / height;
             
-            if((width-2)*(height-2)===yellow) //(w-2)*(h-2) = yellow
-                return [width, height]
+             if(yellow === (width-2)*(height-2)){
+                 return [width, height];
+            }
         }
     }
-    return result;
 }
 
+// 가로 * 세로 = brown + yellow
+// yellow = 가로-2 * 세로-2
