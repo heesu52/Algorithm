@@ -1,10 +1,10 @@
 # [level 2] 타겟 넘버 - 43165 
 
-[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/43165) 
+[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/43165#qna) 
 
 ### 성능 요약
 
-메모리: 35.4 MB, 시간: 13.91 ms
+메모리: 35.9 MB, 시간: 37.12 ms
 
 ### 구분
 
@@ -16,7 +16,7 @@
 
 ### 제출 일자
 
-2024년 10월 11일 02:06:37
+2024년 11월 14일 01:10:05
 
 ### 문제 설명
 
