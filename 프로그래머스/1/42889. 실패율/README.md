@@ -1,10 +1,10 @@
 # [level 1] 실패율 - 42889 
 
-[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/42889) 
+[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/42889#qna) 
 
 ### 성능 요약
 
-메모리: 42.1 MB, 시간: 1378.24 ms
+메모리: 70.5 MB, 시간: 6416.71 ms
 
 ### 구분
 
@@ -16,7 +16,7 @@
 
 ### 제출 일자
 
-2024년 08월 07일 16:49:22
+2024년 11월 28일 20:34:25
 
 ### 문제 설명
 
