@@ -2,18 +2,21 @@ function solution(skill, skill_trees) {
     let answer = skill_trees.length;
     
     skill_trees.forEach((skillTree) => {
-        const arr = [...skill]; //문자열을 배열로 변경
+        let arr = skill.split ("");
         
         for(let i=0; i<skillTree.length; i++){
-            if(!arr.includes(skillTree[i])) continue;
+            if(!arr.includes(skillTree[i])){
+                continue;
+            }
             if(arr.shift() !== skillTree[i]){
-                answer -= 1;
+                answer--;
                 break;
             }
         }
     })
     return answer;
 }
+
 /*
 선행스킬은 조건이 참이어야 배울 수 있음
 skill의 길이는 1이상 26이하, 스킬 중복x
@@ -21,8 +24,11 @@ return 가능한 스킬 트리의 개수
 */
     
 /*
-스킬트리의 원소를 배열로 받음
-스킬의 문자열과 배열의 원소를 비교하여 같으면 제거 -> 계속 arr[0]으로 비교 
-if(선행 스킬이 필요하지 않음) continue
-if(선행 스킬이 필요한데 배우지않음) break
+스킬의 원소를 배열로 변경
+스킬의 첫번째와 스킬트리의 원소가 일치하면 제거 => 계속 arr[0]과 비교
+일치하는걸 찾는게 아니라 일치하지 않는걸 찾는게 더 빠름
+
+if(해당 스킬이 선행스킬에 존재하지 않는다) continue
+if(해당 스킬이 선행스킬에 존재o, 그러나 순서가 일치하지 않는다) break
+skill_trees.length-1;
 */
