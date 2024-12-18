@@ -1,35 +1,20 @@
 function solution(babbling) {
-    let answer = 0;
-    const words = ["aya", "ye", "woo", "ma"];
+    var answer = 0;
+    var arr = ["aya", "ye", "woo", "ma"];
     
-    babbling.forEach((bab) => {
-        let isVaild = true;
+    for (var i=0; i < babbling.length; i++) {
+        let bab = babbling[i];
         
-        for(const word of words){
-            if(bab.includes(word.repeat(2))){
-                isVaild = false; //같은단어가 두번 반복될 경우
+        for (var j=0; j < arr.length; j++) {
+                if(bab.includes(arr[j].repeat(2))) {
                 break;
-            }
-        }
-        if(!isVaild) return;
-        
-        //말할 수 있는 단어를 하나씩 제거
-        while(bab.length>0){
-            let found = false;
-            for(const word of words){
-                if(word === bab.slice(0,word.length)){ //일치하는 부분 잘라서 비교
-                    bab = bab.slice(word.length); // 일치하는 부분 제거
-                    found = true; //맞는 단어를 찾음
-                    break;
                 }
+            bab = bab.split(arr[j]).join(" ");
             }
-            if(!found) {
-                isVaild = false; //발음할 수 없는 단어
-                break; 
-            }
+        if(bab.split(" ").join("").length === 0){
+            answer ++
         }
-        if(isVaild) answer++;
-    });
+    }
     return answer;
 }
 
