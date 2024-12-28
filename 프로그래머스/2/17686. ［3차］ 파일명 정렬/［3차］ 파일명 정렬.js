@@ -5,20 +5,26 @@ function solution(files) {
     for(let i=0; i<files.length; i++){
         let [HEAD, NUMBER, TAIL] = ["", "", ""]; //변수로 저장
         let file = files[i];
+        let numberstart = false; //숫자가 시작됐는지 판단
         
         for(let j=0; j<file.length; j++){
             const char = file[j];
-            if(NUMBER.length === 0 && (isNaN(char) || char === " " )) {
-                HEAD += char;
-            }
-            else if (TAIL.length === 0 && !isNaN(char) && char !==" " && NUMBER.length < 5) {
-                NUMBER += char; 
+            if(!numberstart){
+                if((isNaN(char) || char === " ")) {
+                    HEAD += char;
+                }
+                else if (!isNaN(char) && char !==" " && NUMBER.length < 5) {
+                    numberstart = true; //이후 문자는 TAIL에 저장되도록
+                    NUMBER += char; 
+                }
             }
             else {
                 TAIL += char;
-            }     
+            }
+             
         }
         answer.push({ HEAD, NUMBER, TAIL });
+        console.log(answer)
     }
     
 
