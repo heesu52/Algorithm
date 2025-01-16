@@ -1,37 +1,38 @@
-function solution(n, words) {
-    let stack=[words[0]] //첫번째 단어 stack에 저장
-    
+function solution(n, words) {    
     for(let i=1; i<words.length; i++){
-        //stack에 단어가 있거나 끝말잇기가 안 될 경우
-        if(stack.includes(words[i]) || stack[i-1].substr(-1) !=words[i][0]){
-            return [i%n+1, Math.ceil((i+1)/n)];
+        let cur = words[i-1].slice(-1);
+        let prev = words[i][0];
+        
+        if(cur === prev){
+            for(let j=0; j<i; j++){
+                if(words[i] === words[j]){
+                    return[(i%n)+1, Math.ceil((i+1)/n)]
+                }
+            }
         }
-        //stack에 이미 말한 단어 저장
-        stack.push(words[i])
+        else{
+            return[(i%n)+1, Math.ceil((i+1)/n)]
+        }
     }
-    return [0,0]
+    return [0,0];
 }
 
 
-// function solution(n, words) {
-//    for(let i=1; i<words.length; i++){
-//        //앞단어의 마지막 글자 !=뒤의 단어의 첫번째 글자
-//        if(words[i-1].substr(-1) != words[i][0]){ 
-//            return [i%n+1, Math.ceil((i+1)/n)];
-//        }
-//        else{
-//            //이전 단어만 중복을 비교하면 되서 j<i
-//            for(let j=0; j<i; j++){
-//                //단어가 이미 앞에 나온 경우
-//                if(words[i] === words[j]){
-//                    return [i%n+1, Math.ceil((i+1)/n)];
-//                }
-//            }
-//        }
-//    }
-//     return [0,0];
-// }
+/*
+1. 이전 단어의 마지막 글자와 첫글자가 동일해야함
+2. 이전에 나온 단어는 x
+3. 마지막 사람이 말하면 다시 1번으로 돌아감
+4. n은 사람수
+*/
 
-// // ㅑ=현재단어 인덱스(0부터 시작임)
-// // i%n 할 경우 나머지가 0,1,2...n-1로 나오므로 +1을 해서 몇번째 사람인지 확인
-// // i/n을 하면 소수점이 나올때 올림을 하기 위해 Math.ceil 사용
+/*
+//끝말잇기
+1. if(이전 단어와 현재 단어가 동일하다면)
+1-1. if(이전단어와 중복이라면) return
+1-2. else(중복이아니라면) continue
+2. else(동잃하지 않다면)return
+
+//사람 번호와 해당 턴수 구하기
+1. 해당인덱스%n에 +1
+2. Math.ceil((해딩인덱스+1)/n) => 실제 자기 차례로 턴을 찾아야 하므로 인덱스+1
+*/
