@@ -1,37 +1,42 @@
 function solution(s) {
     let count = 0;
+    let n = s.length;
     
-    for(let i=0; i<s.length; i++){
-        let stack=[]; //초기화
-        let isVaild = true;
+    for (let j = 0; j < n; j++) {
+        let stack = [];
+        let isValid = true;
         
-        for(let index of s){
-            if (index === "(" || index === "{" || index === "[") {
-                stack.push(index);
-            }
-            else if (index === ")" && stack[stack.length-1] === "("){
+        for (let i = 0; i < n; i++) {
+            let char = s[(j + i) % n]; // j만큼 회전한 상태에서 문자 선택
+            
+            if (char === "[" || char === "{" || char === "(") {
+                stack.push(char);
+            } else if (char === "]" && stack[stack.length - 1] === "[") {
                 stack.pop();
-            }
-            else if (index === "}" && stack[stack.length-1] === "{"){
+            } else if (char === "}" && stack[stack.length - 1] === "{") {
                 stack.pop();
-            }
-            else if (index === "]" && stack[stack.length-1] === "["){
+            } else if (char === ")" && stack[stack.length - 1] === "(") {
                 stack.pop();
-            }
-            else {
-                isVaild = false;
+            } else {
+                isValid = false;
+                break; // 잘못된 경우 더 이상 검사할 필요 없음
             }
         }
-        if(isVaild && stack.length === 0)
+
+        if (isValid && stack.length === 0) {
             count++;
-        s = s.slice(1) + s[0];
+        }
     }
+
     return count;
 }
 
-// 첫문자를 제일 마지막에 붙임    
-// (, {, [ 일 경우 -> stack.push();
-// 다음 문자가  ),},] 일 경우 && -> stack.pop();
-// 짝지어서 모든 문자가 pop이 되면 stack.length = 0 -> count++;
-// 모든 경우의 수가 안되면 isVaild = false (아무것도 안들어가는 경우)
-// return count;
+
+
+
+/*
+[,{,( 일 경우 stackpush
+],},) 일 경우 stack.pop
+stack.length가 0이라면 count++
+s에서 첫번째 문자를 자르고 뒤에 다시 붙이기
+*/
