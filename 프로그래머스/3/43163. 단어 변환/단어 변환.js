@@ -12,10 +12,10 @@ function solution(begin, target, words) {
         if(currentword === target) return count; //6
         
         
-        words.forEach(word => {
+        for(let word of words) {
             let NotEqual = 0;
             
-            if(visited.includes(word)) return; //1
+            if(visited.includes(word)) continue; //1
             
             for(let i=0; i<word.length; i++){ //3
                 if(currentword[i] !== word[i]){
@@ -26,7 +26,7 @@ function solution(begin, target, words) {
                 queue.push([word, ++count]);
                 visited.push(word); //5
             } 
-        });
+        };
     }
     return answer;
 }
