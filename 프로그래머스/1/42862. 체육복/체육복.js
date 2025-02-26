@@ -1,20 +1,9 @@
 function solution(n, lost, reserve) {
-    let filter_lost = lost.filter(i=>!reserve.includes(i)).sort((a,b)=>b-a);
-    let filter_reserve = reserve.filter(i=>!lost.includes(i)).sort((a,b)=>b-a);
+    let filter_lost = lost.filter(i=>!reserve.includes(i));
+    let filter_reserve = reserve.filter(i=>!lost.includes(i));
     
-    let answer  = n-filter_lost.length;
-    
-    for(let i=0; i<filter_lost.length; i++){
-        for(let j=0; j<filter_reserve.length; j++){
-            if(filter_lost[i]+1 === filter_reserve[j] || filter_lost[i]-1 === filter_reserve[j]){
-                filter_reserve.splice(j,1);
-                answer++;
-                break;
-            }
-        }
-    }
-    return answer;
-    
+    console.log(filter_lost);
+    console.log(filter_reserve);
 }
 
 
