@@ -1,23 +1,30 @@
 function solution(numbers) {
     let answer = [];
-    
-    for(let i=0; i<numbers.length; i++){
-        if(numbers[i]%2===0) // 짝수 일 때
-            answer.push(numbers[i]+1);
-        else{ //홀수 일 때
-            let current ="0" + numbers[i].toString(2);
-            for(let j=current.length-1; j>=0; j--){ //오른쪽부터 탐색
-                if(current[j]==="0"){
-                    let newnum = current.substring(0,j) + "10" + current.substring(j+2,current.length);
-                    answer.push(parseInt(newnum,2));
+
+    for (let i = 0; i < numbers.length; i++) {
+        if (numbers[i] % 2 === 0) {
+            answer.push(numbers[i] + 1); // 짝수일 경우 +1
+        } else {
+            let current = "0" + numbers[i].toString(2); // 0 추가 (0이 없을 수도 있기 때문)
+
+            for (let j = current.length - 1; j >= 0; j--) {
+                if (current[j] === '0') { 
+                    // 현재 문자열을 배열로 변환 후 변경
+                    let arr = current.split("");
+                    arr[j] = '1'; // 0을 1로 변경
+                    arr[j + 1] = '0'; // 오른쪽 비트를 0으로 변경
+                    current = arr.join(""); // 다시 문자열로 변환
+
+                    answer.push(parseInt(current, 2)); // 2진수를 정수로 변환 후 저장
                     break;
                 }
             }
         }
     }
-    console.log(answer)
+
     return answer;
 }
+
 
 /*
 f(x) = x보다 크고 x와 비트가 1~2개 다른 수 중에서 가장 작은 수
